@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.simplecalculator.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:theme="@style/Theme.SimpleCalculator"
+        tools:context=".view.MainActivity">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:focusable="false"
+            android:inputType="none"
+            android:text="@={viewModel.currentInput}"
+            android:textAlignment="textEnd"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttons"
+            tools:layout_editor_absoluteX="10dp">
+
+            <ImageButton
+                android:id="@+id/historyBtn"
+                style="@style/Button.Icon"
+                android:background="@drawable/ic_baseline_access_time_24"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/removeBtn"
+                style="@style/Button.Icon"
+                android:background="@drawable/ic_baseline_backspace_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="@{() -> viewModel.clearLastSymbol()}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TableLayout
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Danger"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.clearAll()}"
+                    android:text="@string/clear" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/parentheses" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/percent" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/divide)}"
+                    android:text="@string/divide" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_7)}"
+                    android:text="@string/_7" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_8)}"
+                    android:text="@string/_8" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_9)}"
+                    android:text="@string/_9" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/multiplication)}"
+                    android:text="@string/multiplication" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_4)}"
+                    android:text="@string/_4" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_5)}"
+                    android:text="@string/_5" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_6)}"
+                    android:text="@string/_6" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/subtraction)}"
+                    android:text="@string/subtraction" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_1)}"
+                    android:text="@string/_1" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_2)}"
+                    android:text="@string/_2" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_3)}"
+                    android:text="@string/_3" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/addition)}"
+                    android:text="@string/addition" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="+/-" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/_0)}"
+                    android:text="@string/_0" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addSymbol(@string/dot)}"
+                    android:text="@string/dot" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.calculate()}"
+                    android:text="=" />
+            </TableRow>
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

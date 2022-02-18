@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="cornerRadius">100dp</item>
+        <item name="android:layout_marginHorizontal">5dp</item>
+        <item name="android:layout_height">98dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>
